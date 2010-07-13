@@ -1,0 +1,26 @@
+This is complete copypaste of the fabulous http://github.com/jtauber/django-mailer with modifications 
+for sending XMPP messages instead of e-mails.
+
+This should really be integrated in to a single, resusable messaging framework, but I needed a quick hack.
+Usage is almost identical to django-mailer, see those docs for details. The differences are outlined below.
+
+=====
+Usage
+=====
+
+Management Commands
+===================
+
+ * ``send_mail`` will clear the current message queue. If there are any
+   failures, they will be marked deferred and will not be attempted again by
+   ``send_xmpp``.
+
+ * ``retry_xmpp_deferred`` will move any deferred XMPP messages back into the normal queue
+   (so it will be attempted again on the next ``send_xmpp``).
+
+XMPP Settings
+===================
+
+ * ``JABBER_JID`` what identifier to authenticate with
+ * ``JABBER_PASSWORD`` what password to authenticate with
+
