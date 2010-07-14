@@ -1,5 +1,5 @@
-VERSION = (0, 0, 1, "a", 1) # following PEP 386
-DEV_N = 1
+VERSION = (0, 0, 1, "a", 2) # following PEP 386
+DEV_N = 2
 
 
 def get_version():
@@ -28,6 +28,8 @@ PRIORITY_MAPPING = {
 def send_jabber(subject, message, from_jid, recipient_list, priority="medium", fail_silently=False):
     from django.utils.encoding import force_unicode
     from jabber.models import make_message
+
+    if not recipient_list: return
     
     priority = PRIORITY_MAPPING[priority]
     
